@@ -1,4 +1,4 @@
-import { View, StyleSheet, Platform } from 'react-native';
+import { View, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
 import React, { PropsWithChildren } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Modal from 'react-native-modal';
@@ -22,34 +22,37 @@ const BottomModal = (props: Props) => {
 
   return (
     <SafeAreaView>
-      <Modal
-        useNativeDriver
-        useNativeDriverForBackdrop
-        isVisible={showTodoForm}
-        backdropColor='rgba(0, 0, 0, 0.26)'
-        style={{ margin: 0 }}
-        onBackButtonPress={onClose}
-        onBackdropPress={onClose}
-        onModalHide={closeModal}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        <View style={styles.endView}>
-          <View style={styles.modalView}>{children}</View>
-        </View>
-      </Modal>
+        <Modal
+          useNativeDriver
+          useNativeDriverForBackdrop
+          isVisible={showTodoForm}
+          backdropColor='rgba(0, 0, 0, 0.26)'
+          style={{ margin: 0 }}
+          onBackButtonPress={onClose}
+          onBackdropPress={onClose}
+          onModalHide={closeModal}
+          avoidKeyboard
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>{children}</View>
+          </View>
+        </Modal>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  endView: {
+  centeredView: {
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     width: '100%',
   },
   modalView: {
     backgroundColor: 'white',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
     paddingHorizontal: 35,
     paddingVertical: 20,
     ...Platform.select({

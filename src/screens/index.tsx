@@ -28,7 +28,7 @@ const Root = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
       {todos.length === 0 && (
         <View style={styles.container}>
           <TouchableOpacity onPress={openAddModal}>
