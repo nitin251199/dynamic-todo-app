@@ -31,8 +31,8 @@ const TodoForm = () => {
       const newTodo: Todo = {
         id: Date.now(),
         text: todoText,
-        isComplete: false,
-        isDeleted: false,
+        complete: false,
+        deleted: false,
       };
 
       dispatch(addTodo(newTodo));

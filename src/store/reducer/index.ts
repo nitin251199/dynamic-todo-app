@@ -29,7 +29,7 @@ export const rootReducer = createSlice({
       const { id } = action.payload;
       state.todos = state.todos.map(todo => {
         if (todo.id === id) {
-          return { ...todo, isDeleted: true };
+          return { ...todo, deleted: true };
         }
         return todo;
       });
@@ -38,7 +38,7 @@ export const rootReducer = createSlice({
       const { id } = action.payload;
       state.todos = state.todos.map(todo => {
         if (todo.id === id) {
-          return { ...todo, isDeleted: false };
+          return { ...todo, deleted: false };
         }
         return todo;
       });

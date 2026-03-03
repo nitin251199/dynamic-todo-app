@@ -8,7 +8,7 @@ const ProgressBar = () => {
   const { width } = useWindowDimensions();
 
   const completedTodos = useMemo(
-    () => todos.filter(el => el.isComplete),
+    () => todos.filter(el => el.complete),
     [todos],
   );
 

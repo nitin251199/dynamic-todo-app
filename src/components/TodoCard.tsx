@@ -23,7 +23,7 @@ export default function TodoCard(props: Props) {
   const dispatch = useAppDispatch();
 
   const markAsComplete = () => {
-    dispatch(updateTodo({ id: todo.id, isComplete: !todo.isComplete }));
+    dispatch(updateTodo({ id: todo.id, complete: !todo.complete }));
   };
 
   const openEditModal = () => {
@@ -92,16 +92,16 @@ export default function TodoCard(props: Props) {
         onPress={markAsComplete}
         style={{
           ...styles.button,
-          backgroundColor: todo.isComplete ? 'orange' : 'green',
+          backgroundColor: todo.complete ? 'orange' : 'green',
         }}
       >
         <Text style={styles.buttonText}>
-          {todo.isComplete ? 'Mark as pending' : 'Mark as complete'}
+          {todo.complete ? 'Mark as pending' : 'Mark as complete'}
         </Text>
       </TouchableOpacity>
 
       <View style={StyleSheet.absoluteFillObject}>
-        {todo.isDeleted && (
+        {todo.deleted && (
           <View
             style={{
               ...StyleSheet.absoluteFillObject,
